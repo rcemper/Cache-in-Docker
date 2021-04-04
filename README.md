@@ -1,64 +1,42 @@
-## intersystems-objectscript-template
-This is a template for InterSystems ObjectScript Github repository.
-The template goes also with a few files which let you immedietly compile your ObjecScript files in InterSystems IRIS Community Edition in a docker container
+Migration from Caché to IRIS can be quite a challenge if your code is grown over many years    
+and probably not so clean structured as you may like it. So you face the need to check your  
+migrated code against some reference data. A few samples might not be a problem,   
+but some hundred GB of data for testing might be.  
 
-## Prerequisites
-Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
+A possible step could be to have your fresh code in IRIS but leave your huge datastore on Caché  
+and connect both environments over ECP.  I have created a demo project that gives you the   
+opportunity to try this based on 2 Docker images with IRIS and with Caché connected over ECP.    
 
-## Installation 
+__Attention:__  
+- Both Docker images require a personal license for MultiServer to enable ECP   
+- The default Community License doesn't allow ECP and can't be used for Caché.  
+As a customer with a support contract, you may get loan licenses directly from WRC.  
 
-Clone/git pull the repo into any local directory
+__Scenario:__   
+  
+ Caché acts as ECP Server while IRIS acts as ECP Client.  
+ In IRIS you have a namespace SAMPLES.  
+ Globals are in remote database SAMPLES on Caché  
+ Routines (and Classes) are in database USER    
+ The classes were just migrated by drag/drop from Cashé Studio to Iris Studio  
+ Data-Globals are in remote database SAMPLES on Caché  
+ 
+ This setup allows you to have local data in namespace USER  
+ and remote data in namespace SAMPLES and run your test queries or other exercises.  
 
-```
-$ git clone https://github.com/intersystems-community/objectscript-docker-template.git
-```
+__Installation for Caché:__  
+- Get the external IPV4 address of the machine that runs your docker environment (example =**_10.10.1.99_** )   
+This is required to establish access between both containers  
+- Download [CrossECP-Caché from OEX](https://openexchange.intersystems.com/package/CrossECP-Cache)   
+Copy your (loan) license key into cache.key   
+- From the download directory run:   
+__docker-compose up -d --build__    and you are done with Caché.   
+It uses -p __41773__:1972 for the Caché super server and -p __42773__:57772  for the webserver    
+Your actual directory is mapped to __/external__ to allow file exchange with docker environment  
 
-Open the terminal in this directory and run:
+- Next proceed to [CrossECP-IRIS from OEX](https://openexchange.intersystems.com/package/CrossECP-IRIS)   
 
-```
-$ docker-compose build
-```
+__Note:__
+_ZPM is not available for Caché_
 
-3. Run the IRIS container with your project:
-
-```
-$ docker-compose up -d
-```
-
-## How to Test it
-
-Open IRIS terminal:
-
-```
-$ docker-compose exec iris iris session iris
-USER>write ##class(dc.PackageSample.ObjectScript).Test()
-```
-## How to start coding
-This repository is ready to code in VSCode with ObjectScript plugin.
-Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugin and open the folder in VSCode.
-Open /src/cls/PackageSample/ObjectScript.cls class and try to make changes - it will be compiled in running IRIS docker container.
-![docker_compose](https://user-images.githubusercontent.com/2781759/76656929-0f2e5700-6547-11ea-9cc9-486a5641c51d.gif)
-
-Feel free to delete PackageSample folder and place your ObjectScript classes in a form
-/src/Package/Classname.cls
-[Read more about folder setup for InterSystems ObjectScript](https://community.intersystems.com/post/simplified-objectscript-source-folder-structure-package-manager)
-
-The script in Installer.cls will import everything you place under /src into IRIS.
-
-
-## What's inside the repository
-
-### Dockerfile
-
-The simplest dockerfile which starts IRIS and imports code from /src folder into it.
-Use the related docker-compose.yml to easily setup additional parametes like port number and where you map keys and host folders.
-
-
-### .vscode/settings.json
-
-Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plugin](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript))
-
-### .vscode/launch.json
-Config file if you want to debug with VSCode ObjectScript
-
-[Read about all the files in this artilce](https://community.intersystems.com/post/dockerfile-and-friends-or-how-run-and-collaborate-objectscript-projects-intersystems-iris)
+[Article in DC](https://community.intersystems.com/post/using-ecp-across-iris-and-cach%C3%A9)
