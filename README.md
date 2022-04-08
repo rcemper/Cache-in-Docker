@@ -38,5 +38,10 @@ Your actual directory is mapped to __/external__ to allow file exchange with do
 
 __Note:__
 _ZPM is not available for Caché_
+_Demo Server is not available for ECP_
 
-[Article in DC](https://community.intersystems.com/post/using-ecp-across-iris-and-cach%C3%A9)
+[Article in DC](https://community.intersystems.com/post/using-ecp-across-iris-and-cach%C3%A9)  
+
+**Code Quality** in SCREENSHOTS
+
+
