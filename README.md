@@ -42,6 +42,6 @@ _Demo Server is not available for ECP_
 
 [Article in DC](https://community.intersystems.com/post/using-ecp-across-iris-and-cach%C3%A9)  
 
-**Code Quality** in SCREENSHOTS
-
+**Code Quality**
+<img width="85%" src="https://openexchange.intersystems.com/mp/img/packages/1263/screenshots/5pz2sgqllvod96o6seav3rmv4.jpg">
 
