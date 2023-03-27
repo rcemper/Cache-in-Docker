@@ -1,3 +1,5 @@
+<p align="right"><img src="https://github.com/isc-at/CPIPE/blob/master/archived.jpg"/></p>
+
 Migration from Caché to IRIS can be quite a challenge if your code is grown over many years    
 and probably not so clean structured as you may like it. So you face the need to check your  
 migrated code against some reference data. A few samples might not be a problem,   
@@ -36,9 +38,8 @@ Your actual directory is mapped to __/external__ to allow file exchange with do
 
 - Next proceed to [CrossECP-IRIS from OEX](https://openexchange.intersystems.com/package/CrossECP-IRIS)   
 
-__Note:__
-_ZPM is not available for Caché_    
-_Demo Server is not available for ECP_   
-
+__Note:__    
+*Officiial ZPM is not available for Caché. But I did a private port*
+ 
 [Article in DC](https://community.intersystems.com/post/using-ecp-across-iris-and-cach%C3%A9)  
 
