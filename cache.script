@@ -1,6 +1,3 @@
 zn "%SYS"
-;  enable ECP Server
-set ecp="%service_ecp"
-set set("Enabled")=1
-set sc=##class(Security.Services).Modify(ecp,.set)
+Write "reserved for future use",!
 halt
