@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     restart: always
     ports:
-      - '41773:1972'
-      - '42773:57772'
+      - 1972:1972
+      - 57772:57772
     volumes:
       - ./:/opt/cacheapp
       - ../:/external
