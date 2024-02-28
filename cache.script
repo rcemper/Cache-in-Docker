@@ -1,3 +1,4 @@
-zn "%SYS"
-Write "reserved for future use",!
+zn "USER"
+set tSC sc=$system.OBJ.Load(file,"ck",.err,.lis) 
+zwrite
 halt
