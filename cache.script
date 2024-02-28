@@ -2,6 +2,7 @@ ZN "%SYS"
 Do ##class(Security.Users).UnExpireUserPasswords("*")
 
 zn "USER"
+set file="/tmp/WebTerminal-v4.9.5.xml"
 set tSC=$system.OBJ.Load(file,"ck",.err,.lis) 
 zwrite
 halt
