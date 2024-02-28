@@ -9,6 +9,7 @@ WORKDIR /opt/
 
 RUN  usermod -a -G root cacheusr 
 
+COPY WebTerminal-v4.9.5.xml tmp/WebTerminal-v4.9.5.xml
 COPY cache.script /tmp/cache.script
 RUN ccontrol start CACHE quietly \
     && ccontrol session CACHE < /tmp/cache.script \
