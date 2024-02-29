@@ -1,6 +1,7 @@
 # Docker_Demo: Caché
 It's a simple plain Caché install in Docker   
-for simple testing with the default user settings   
+for simple testing with the default user settings
+- now available with WebTerminal
 ### Installation 
 Download this repo  
 Enter the downloaded directory  
